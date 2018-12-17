@@ -1,53 +1,60 @@
-import React, { Component } from "react";
-// import Form from "./Form";
-// import TodoList from "./TodoList";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { Component } from 'react';
+import List from './List';
+
+export const doIncrement = (prevState) => ({
+  counter: prevState.counter + 1
+});
+
+export const doDecrement = (prevState) => ({
+  counter: prevState.counter - 1
+});
 
 class App extends Component {
-  state = {
-    on: false,
-    input: "",
-    mainColor: "blue",
-    lifeCycle: ""
-  };
+  constructor(props) {
+    super(props);
 
-  handleStrings(str) {
-    if (str === "Hello World") return true;
-    return false;
+    this.state = {
+      counter: 0,
+    };
+
+    this.onIncrement = this.onIncrement.bind(this);
+    this.onDecrement = this.onDecrement.bind(this);
   }
-  componentDidMount() {
-    this.setState({ lifeCycle: "componentDidMount" });
+
+  onIncrement() {
+    this.setState(doIncrement);
   }
-  componentWillReceiveProps() {
-    this.setState({ lifeCycle: "componentWillReceiveProps" });
+
+  onDecrement() {
+    this.setState(doDecrement);
   }
+
   render() {
+    const { counter } = this.state;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-          <h3 className={this.state.mainColor}>Everyone is Welcome!</h3>
-        </header>
-        <p className="App-intro">Hello World</p>
-        <p className="button-state">{this.state.on ? "Yes!" : "No!"}</p>
-        <button onClick={() => this.setState({ on: true })}>Click</button>
-        <h2>{this.state.input}</h2>
-        <input
-          onChange={e => this.setState({ input: e.currentTarget.value })}
-          type="text"
-        />
-        <p className="lifeCycle">{this.state.lifeCycle}</p>*
-      </div>
+        <div>
+          <h1>My Counter</h1>
+          <Counter counter={counter} />
+
+          <button
+              type="button"
+              onClick={this.onIncrement}
+          >
+            Increment
+          </button>
+
+          <button
+              type="button"
+              onClick={this.onDecrement}>
+            Decrement
+          </button>
+          <List items={['Angular', 'React']}/>
+        </div>
     );
   }
 }
 
-export class Link extends Component {
-  render() {
-    return this.props.hide ? null : <a href={this.props.address}>Click</a>;
-  }
-}
+export const Counter = ({ counter }) => <p>{counter}</p>;
 
 export default App;
