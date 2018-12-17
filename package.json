@@ -14,7 +14,8 @@
     "test:snapshot:watch": "npm run test:snapshot -- --watch",
     "test:e2e-interactive": "cypress open",
     "cy:run": "cypress run",
-    "test:cypress": "start-server-and-test start http://localhost:8070 cy:run"
+    "test:cypress": "start-server-and-test start http://localhost:8070 cy:run",
+    "ci": "npm run test:unit && npm run test:snapshot && npm run test:cypress"
   },
   "repository": {
     "type": "git",
