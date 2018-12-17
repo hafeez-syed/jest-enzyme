@@ -2,5 +2,4 @@
 .idea/
 node_modules/
 cypress/videos
-src/__snapshots__
 package-lock.json
