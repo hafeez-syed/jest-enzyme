@@ -9,7 +9,9 @@
     "test-js": "react-scripts test --env=jsdom",
     "test": "jest",
     "test:unit": "mocha --require @babel/register --require ./test/helpers.js --require ./test/dom.js --require ignore-styles ./src/**/*.spec.js",
-    "test:unit:watch": "npm run test:unit -- --watch"
+    "test:unit:watch": "npm run test:unit -- --watch",
+    "test:snapshot": "jest --config ./test/jest.config.json",
+    "test:snapshot:watch": "npm run test:snapshot -- --watch"
   },
   "repository": {
     "type": "git",
@@ -43,7 +45,11 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "jest": "^23.6.0",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "react-test-renderer": "^16.6.3"
   }
 }
