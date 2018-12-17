@@ -16,7 +16,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test:cypress": "start-server-and-test start http://localhost:8070 cy:run",
-    "ci": "npm run test:unit -- --coverage && npm run test:snapshot -- -u -- --coverage && npm run test:cypress",
+    "ci": "npm run test:unit -- --coverage && npm run test:snapshot -- -u --coverage && npm run test:cypress",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
   "repository": {
